@@ -4,7 +4,7 @@ const person:{
     name:string,
     age:number,
     hobbies:string[],
-    role,
+    role:any,
 } = {
     name:"Ryota",
     age:20,

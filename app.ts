@@ -1,5 +1,18 @@
-let userName:string = "Ryota"
+interface Person {
+    name:string;
+    age:number;
 
-userName = "I see"
+    greet(phrase:string) :void;
+}
 
-console.log(userName)
+let user1 :Person;
+
+user1 = {
+    name:"Ryota",
+    age:20,
+    greet(phrase) {
+        console.log(phrase + ""  + this.name)
+    }
+}
+
+user1.greet("Hi")
