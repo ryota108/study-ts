@@ -1,5 +1,17 @@
+{
+  interface AddFn {
+   (a:number,b:number):number
+  }
+
+let add:AddFn;
+
+add = (n1:number,n2 :number)=> {
+    return n1 + n2;
+}
+
 interface Named {
     readonly name: string;
+    outputName?:string;
 }
 
 interface Greetable extends Named{
@@ -7,7 +19,7 @@ interface Greetable extends Named{
 }
 
 class Person implements Greetable {
-    name: string;
+    name: string
     age = 30
 
     constructor(n:string){
@@ -30,3 +42,4 @@ user1 = {
 
 user1.greet("Hi")
 
+}
