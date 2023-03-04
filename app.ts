@@ -1,45 +1,75 @@
-{
-  interface AddFn {
-   (a:number,b:number):number
-  }
+{type Admin = {
+  name: string;
+  privileges: string[];
+};
 
-let add:AddFn;
+type Employee = {
+  name: string;
+  startDate: Date;
+};
+type ElevatedEmployee = Admin & Employee;
 
-add = (n1:number,n2 :number)=> {
-    return n1 + n2;
+const e1 :ElevatedEmployee = {
+    name:"Max",
+    privileges:["create-server"],
+    startDate : new Date()
 }
 
-interface Named {
-    readonly name: string;
-    outputName?:string;
+type Combinable = string | number;
+type Numeric = number | boolean;
+
+type Universal = Combinable & Numeric;
+
+function add (a:Combinable,b:Combinable) {
+    if (typeof a === "string" || typeof b === "string") {
+        return a.toString() + b.toString()
+    }
+    return a + b
 }
 
-interface Greetable extends Named{
-    greet(phrase:string) :void;
+type UnknownEmployee = Admin | Employee;
+
+function printEmployeeInformation (emp:UnknownEmployee) {
+    console.log("name" + emp.name)
+    if ("privileges" in emp) {
+        console.log("privileges:" + emp.privileges)
+    }
+    if ("startDate" in emp) {
+        console.log("startDate:" + emp.startDate)
+    }
 }
 
-class Person implements Greetable {
-    name: string
-    age = 30
+printEmployeeInformation(e1)
 
-    constructor(n:string){
-        this.name = n
+class Car {
+    drive() {
+        console.log("driving")
+    }
+}
+
+class Truck {
+    drive() {
+        console.log("Driving Truck ..." );
     }
 
-    greet(phrase: string){
-        console.log(phrase + "" + this.name)
-    } 
-}
-let user1 :Person;
-
-user1 = {
-    name:"Ryota",
-    age:20,
-    greet(phrase) {
-        console.log(phrase + ""  + this.name)
+    loadCargo (amount:number) {
+        console.log("loading cargo... " + amount)
     }
 }
 
-user1.greet("Hi")
+type Vehicle = Car | Truck;
+
+const v1 = new Car();
+const v2 = new Truck();
+
+function useVehicle(vehicle:Vehicle){
+    vehicle.drive();
+    if (vehicle instanceof Truck){
+        vehicle.loadCargo(1000)
+    }
+}
+
+useVehicle(v1)
+useVehicle(v2)
 
 }
