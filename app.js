@@ -3,7 +3,7 @@
     const e1 = {
         name: "Max",
         privileges: ["create-server"],
-        startDate: new Date()
+        startDate: new Date(),
     };
     function add(a, b) {
         if (typeof a === "string" || typeof b === "string") {
@@ -44,4 +44,16 @@
     }
     useVehicle(v1);
     useVehicle(v2);
+    function moveAnimal(animal) {
+        let speed;
+        switch (animal.type) {
+            case "bard":
+                speed = animal.flyingSpeed;
+                break;
+            case "horse":
+                speed = animal.groundSpeed;
+        }
+        console.log("moving at speed:" + speed);
+    }
+    moveAnimal({ type: "bard", flyingSpeed: 20 });
 }
