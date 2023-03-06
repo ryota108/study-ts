@@ -97,5 +97,6 @@
     console.log("moving at speed:" + speed);
   }
 
-  moveAnimal({type:"bard",flyingSpeed:20})
+  // moveAnimal({type:"bard",flyingSpeed:20})/
+
 }
