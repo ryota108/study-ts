@@ -94,9 +94,12 @@
         case "horse":
             speed = animal.groundSpeed
     }
-    console.log("moving at speed:" + speed);
   }
 
-  // moveAnimal({type:"bard",flyingSpeed:20})/
+  moveAnimal({type:"bard",flyingSpeed:20})
 
+  function merge<T,U> (objA:T,objB:U){
+    return Object.assign(objA,objB);
+  }
+  merge({name:"ok"},{age:30})
 }
