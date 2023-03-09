@@ -83,23 +83,34 @@
     groundSpeed: number;
   }
 
-  type Animal = Bard | Horse
+  type Animal = Bard | Horse;
 
-  function moveAnimal (animal:Animal) {
+  function moveAnimal(animal: Animal) {
     let speed;
-    switch (animal.type){
-        case "bard":
-        speed = animal.flyingSpeed
+    switch (animal.type) {
+      case "bard":
+        speed = animal.flyingSpeed;
         break;
-        case "horse":
-            speed = animal.groundSpeed
+      case "horse":
+        speed = animal.groundSpeed;
     }
   }
 
-  moveAnimal({type:"bard",flyingSpeed:20})
-
-  function merge<T,U> (objA:T,objB:U){
-    return Object.assign(objA,objB);
-  }
-  merge({name:"ok"},{age:30})
+  moveAnimal({ type: "bard", flyingSpeed: 20 });
 }
+
+const names: Array<string> = [];
+
+const promise: Promise<number> = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(20);
+  }, 2000);
+});
+
+function merge<T,U>(objA:T, objB: U) {
+  return Object.assign(objA, objB);
+}
+
+
+const mergedObj = merge({name:"Max"},{age:20}) ;
+

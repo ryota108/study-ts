@@ -53,7 +53,16 @@
             case "horse":
                 speed = animal.groundSpeed;
         }
-        console.log("moving at speed:" + speed);
     }
     moveAnimal({ type: "bard", flyingSpeed: 20 });
 }
+const names = [];
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(20);
+    }, 2000);
+});
+function merge(objA, objB) {
+    return Object.assign(objA, objB);
+}
+const mergedObj = merge({ name: "Max" }, { age: 20 });
