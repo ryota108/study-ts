@@ -107,27 +107,30 @@ const promise: Promise<number> = new Promise((resolve, reject) => {
   }, 2000);
 });
 
-function merge<T extends object,U>(objA:T, objB: U) {
+function merge<T extends object, U>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
 
-
-const mergedObj = merge({name:"Max"},{age:20}) ;
+const mergedObj = merge({ name: "Max" }, { age: 20 });
 
 interface Lengthy {
-  length:number
+  length: number;
 }
 
-function countAndPrint<T extends Lengthy >(element:T){
+function countAndPrint<T extends Lengthy>(element: T) {
   let descriptionText = "Got no value";
-  if(element.length === 1){
-    descriptionText = "Got 1 value"
-  }else if (element.length > 1){
-    descriptionText = "Got "+ element.length + "elements"
+  if (element.length === 1) {
+    descriptionText = "Got 1 value";
+  } else if (element.length > 1) {
+    descriptionText = "Got " + element.length + "elements";
   }
-   return [element,descriptionText];
+  return [element, descriptionText];
 }
 
+console.log(countAndPrint("Hi there!"));
 
-console.log(countAndPrint("Hi there!"))
+function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) {
+  return "Value " + obj[key];
+}
 
+extractAndConvert({ name: "Max" }, "name");
